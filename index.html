@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment8.2</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<section>
+    <div class="mainPage">
+
+        <h3>My Page</h3>
+
+        <div id="login" class="btn-group">
+            <a href="login.html">
+                <button  class="log-btn">Login</button>
+            </a>
+
+            <a href="register.html">
+                <button  class="reg-btn">Register</button>
+            </a>
+
+        </div>
+
+        <div id="logout">
+            <h3 id="welcomeMessage"></h3>
+            <button onclick="logout();" class="reg-btn">Logout</button>
+        </div>
+
+    </div>
+</section>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(window).on('load',function(){
+        var flag= localStorage.getItem('flag')
+        document.getElementById('welcomeMessage').innerHTML = "";
+        if ((flag)) {
+            document.getElementById('logout').style.display="block";
+            document.getElementById('login').style.display="none";
+            document.getElementById('welcomeMessage').innerHTML = "Welcome " + localStorage.getItem('username') + "!";
+        }
+
+        else{
+            document.getElementById('logout').style.display="none";
+            document.getElementById('login').style.display="block";
+        }
+    })
+
+    function logout(){
+        localStorage.clear();
+        location.reload();
+    }
+
+</script>
+</body>
+</html>

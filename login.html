@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<section>
+
+    <div id="welcomeMessage"></div>
+
+    <div class="formDiv">
+
+        <div class="login">
+
+            <h3>Already a student? <span>Login</span></h3>
+
+            <form class="form" onsubmit="return login(this)">
+
+                <input type="text" class="name" id="userName" placeholder="Username" required>
+
+                <input type="password" class="password" id="password" placeholder="Password" required>
+
+                <div class="lbottom">
+
+                    <input style="padding: 0;height: 50px;font-size: 17px;width: 175px;border: 1px solid#fff;color: #fff;" type="submit" class="btn btn-register" value="Login"/>
+
+                    <a href="index.html"><span class="back">Go Back</span></a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+    function login(theForm) {
+        document.getElementById('welcomeMessage').innerHTML = "";
+        var inputUsername = theForm["userName"];
+        var inputPassword = theForm["password"];
+        var username = inputUsername.value;
+        var password = inputPassword.value;
+        if ((username == localStorage.getItem('username')) && (password == localStorage.getItem('password'))) {
+            localStorage.setItem("flag", 1);
+            setTimeout(function(){
+                window.location.href="index.html"
+            },200)
+        } else {
+            document.getElementById('welcomeMessage').innerHTML = "Invalid Log-in!";
+        }
+        return false;
+    } // end login()
+
+</script>
+
+</body>
+
+</html>
